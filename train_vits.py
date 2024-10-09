@@ -1,3 +1,4 @@
+import os
 from trainer import Trainer, TrainerArgs
 
 from TTS.tts.configs.shared_configs import BaseDatasetConfig , CharactersConfig
@@ -11,7 +12,7 @@ from TTS.utils.downloaders import download_thorsten_de
 
 output_path = os.path.dirname(os.path.abspath(__file__))
 dataset_config = BaseDatasetConfig(
-    formatter="ljspeech", meta_file_train="metadata.csv", path="./pertts-speech-database-rokh-ljspeech"
+    formatter="ljspeech", meta_file_train="__metadata.csv", path="./pertts-speech-database-rokh-ljspeech"
 )
 
 
@@ -34,7 +35,7 @@ audio_config = VitsAudioConfig(
 config = VitsConfig(
     audio=audio_config,
     run_name="vits_rokh_male_scratch",
-    batch_size=24,
+    batch_size=16,
     eval_batch_size=16,
     batch_group_size=5,
     num_loader_workers=0,
